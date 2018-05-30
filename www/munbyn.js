@@ -1,9 +1,13 @@
-var exec = require('cordova/exec');
+// Empty constructor
+function BTPrinter() {}
 
-var BTPrinter = {
-   isAvailable: function(fnSuccess, fnError){
-      exec(fnSuccess, fnError, "BluetoothService", "isAvailable", []);
-   }
+BTPrinter.isAvailable = function(successCallback, errorCallback) {
+  var options = {};
+  cordova.exec(successCallback, errorCallback, 'BluetoothService', 'isAvailable', [options]);
+}
+
+BTPrinter.install = function() {
+  munbynPlugin = new BTPrinter();
+  return munbynPlugin;
 };
-
-module.exports = BTPrinter;
+cordova.addConstructor(BTPrinter.install);
