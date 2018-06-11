@@ -25,6 +25,7 @@
 		
 	  <config-file target="AndroidManifest.xml" parent="/*">
          <uses-permission android:name="android.permission.BLUETOOTH" />
+         <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
       </config-file>
 
         <source-file src="src\Android\zj\com\cn\bluetooth\sdk\BluetoothService.java" target-dir="src/zj/com/cn/bluetooth/sdk" />
