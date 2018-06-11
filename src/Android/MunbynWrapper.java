@@ -19,7 +19,9 @@ import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 
+import java.io.IOException;
 import java.util.Set;
+import java.util.UUID;
 
 public class MunbynWrapper extends CordovaPlugin {
     private static final String LOG_TAG = "BluetoothPrinter";
@@ -28,12 +30,12 @@ public class MunbynWrapper extends CordovaPlugin {
     BluetoothDevice mmDevice;
     @Override
     public boolean execute(String action, JSONArray args,
-    final CallbackContext callbackContext) {
+    final CallbackContext callbackContext) throws JSONException {
         if (action.equals("show")) {
             callbackContext.success("win");
             return true;
         }
-        if (action.equals("write")) {
+        else if (action.equals("write")) {
             byte[] byteArray = "write string".getBytes();
             Context context = this.cordova.getActivity().getApplicationContext();
             BluetoothService btService = new BluetoothService(context, new Handler());
@@ -41,13 +43,36 @@ public class MunbynWrapper extends CordovaPlugin {
             callbackContext.success("written");
             return true;
         }
-        if (action.equals("list")) {
+        else if (action.equals("connect")) {
+            String name = args.getString(0);
+            if (findBT(callbackContext, name)) {
+                try {
+                    Context context = this.cordova.getActivity().getApplicationContext();
+                    BluetoothService btService = new BluetoothService(context, new Handler());
+                    try {
+                        btService.connect(mmDevice);
+                    } catch (Exception e) {
+                        callbackContext.error("Bluetooth connection error");
+                    }
+                    callbackContext.success("connected");
+
+                } catch (Exception e) {
+                    Log.e(LOG_TAG, e.getMessage());
+                    e.printStackTrace();
+                }
+            } else {
+                callbackContext.error("Bluetooth Device Not Found: " + name);
+            }
+            return true;
+        }
+        else if (action.equals("list")) {
             listBT(callbackContext);
             return true;
         }
-      return false;
+      return true;
     }
 
+    //list all bluetooth devices (return list of names)
     void listBT(CallbackContext callbackContext) {
         BluetoothAdapter mBluetoothAdapter = null;
         String errMsg = null;
@@ -87,5 +112,36 @@ public class MunbynWrapper extends CordovaPlugin {
             e.printStackTrace();
             callbackContext.error(errMsg);
         }
+    }
+
+    // This will find a bluetooth printer device
+    boolean findBT(CallbackContext callbackContext, String name) {
+        try {
+            mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+            if (mBluetoothAdapter == null) {
+                Log.e(LOG_TAG, "No bluetooth adapter available");
+            }
+            if (!mBluetoothAdapter.isEnabled()) {
+                Intent enableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                this.cordova.getActivity().startActivityForResult(enableBluetooth, 0);
+            }
+            Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
+            if (pairedDevices.size() > 0) {
+                for (BluetoothDevice device : pairedDevices) {
+                    String btName = device.getName();
+                    if (device.getName().equalsIgnoreCase(name)) {
+                        mmDevice = device;
+                        return true;
+                    }
+                }
+            }
+            Log.d(LOG_TAG, "Bluetooth Device Found: " + mmDevice.getName());
+        } catch (Exception e) {
+            String errMsg = e.getMessage();
+            Log.e(LOG_TAG, errMsg);
+            e.printStackTrace();
+            callbackContext.error(errMsg);
+        }
+        return false;
     }
 }
