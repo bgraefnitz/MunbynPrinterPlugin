@@ -1,4 +1,3 @@
-cordova.define("cordova-plugin-munbynplugin.MunbynWrapper", function(require, exports, module) {
 var exec = require('cordova/exec');
 
 var BTPrinter = {
@@ -11,4 +10,3 @@ var BTPrinter = {
 };
 
 module.exports = BTPrinter;
-});
