@@ -28,16 +28,16 @@
          <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
       </config-file>
 
-        <source-file src="src\Android\zj\com\cn\bluetooth\sdk\BluetoothService.java" target-dir="src/zj/com/cn/bluetooth/sdk" />
-        <source-file src="src\Android\zj\com\command\sdk\Command.java" target-dir="src/zj/com/command/sdk" />
-        <source-file src="src\Android\zj\com\command\sdk\PrinterCommand.java" target-dir="src/zj/com/command/sdk" />
-        <source-file src="src\Android\zj\com\cn\bluetooth\sdk\DeviceListActivity.java" target-dir="src/zj/com/cn/bluetooth/sdk" />
-        <source-file src="src\Android\zj\com\cn\bluetooth\sdk\Main_Activity.java" target-dir="src/zj/com/cn/bluetooth/sdk" />
-        <source-file src="src\Android\zj\com\command\sdk\PrintPicture.java" target-dir="src/zj/com/command/sdk" />
-        <source-file src="src\Android\zj\com\cn\bluetooth\sdk\BuildConfig.java" target-dir="src/zj/com/cn/bluetooth/sdk" />
-        <source-file src="src\Android\zj\com\cn\bluetooth\sdk\R.java" target-dir="src/zj/com/cn/bluetooth/sdk" />
-        <source-file src="src\Android\btsdk.jar" target-dir="libs" />
-        <source-file src="src\Android\zixng.jar" target-dir="libs" />
-        <source-file src="src\Android\MunbynWrapper.java" target-dir="src/com/bgraefnitz/wrapper" />
+        <source-file src="src/Android/zj/com/cn/bluetooth/sdk/BluetoothService.java" target-dir="src/zj/com/cn/bluetooth/sdk" />
+        <source-file src="src/Android/zj/com/command/sdk/Command.java" target-dir="src/zj/com/command/sdk" />
+        <source-file src="src/Android/zj/com/command/sdk/PrinterCommand.java" target-dir="src/zj/com/command/sdk" />
+        <source-file src="src/Android/zj/com/cn/bluetooth/sdk/DeviceListActivity.java" target-dir="src/zj/com/cn/bluetooth/sdk" />
+        <source-file src="src/Android/zj/com/cn/bluetooth/sdk/Main_Activity.java" target-dir="src/zj/com/cn/bluetooth/sdk" />
+        <source-file src="src/Android/zj/com/command/sdk/PrintPicture.java" target-dir="src/zj/com/command/sdk" />
+        <source-file src="src/Android/zj/com/cn/bluetooth/sdk/BuildConfig.java" target-dir="src/zj/com/cn/bluetooth/sdk" />
+        <source-file src="src/Android/zj/com/cn/bluetooth/sdk/R.java" target-dir="src/zj/com/cn/bluetooth/sdk" />
+        <source-file src="src/Android/btsdk.jar" target-dir="libs" />
+        <source-file src="src/Android/zixng.jar" target-dir="libs" />
+        <source-file src="src/Android/MunbynWrapper.java" target-dir="src/com/bgraefnitz/wrapper" />
     </platform>
 </plugin>
