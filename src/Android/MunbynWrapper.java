@@ -46,6 +46,7 @@ public class MunbynWrapper extends CordovaPlugin {
                         message = message + "\n";
                         byte[] sendCommand = PrinterCommand.POS_Print_Text(message, "GBK", 0, 0, 0, 0);
                         btService.write(sendCommand);
+                        btService.stop();
                         callbackContext.success("written");
                         return true;
                     } catch (Exception e) {
