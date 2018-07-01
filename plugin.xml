@@ -40,4 +40,15 @@
         <source-file src="src/Android/zixng.jar" target-dir="libs" />
         <source-file src="src/Android/MunbynWrapper.java" target-dir="src/com/bgraefnitz/wrapper" />
     </platform>
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="MunbynWrapper">
+				<param name="ios-package" value="MunbynWrapper" />
+			</feature>
+		</config-file>
+		<header-file src="src/ios/MunbynWrapper.h" />
+		<source-file src="src/ios/MunbynWrapper.m" />
+		<header-file src="src/ios/PrinerSDK.h" />
+		<source-file src="src/ios/libPrinterSDK.a" />
+	</platform>
 </plugin>
