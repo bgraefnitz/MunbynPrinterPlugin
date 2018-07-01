@@ -5,7 +5,8 @@
   "cordova": {
     "id": "cordova-plugin-munbynplugin",
     "platforms": [
-      "android"
+      "android",
+	  "ios"
     ]
   },
   "repository": {
@@ -17,7 +18,8 @@
     "bluetooth",
     "printer",
     "ecosystem:cordova",
-    "cordova-android"
+    "cordova-android",
+    "cordova-ios"
   ],
   "engines": [
     {
