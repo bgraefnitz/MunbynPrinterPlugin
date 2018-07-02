@@ -46,9 +46,9 @@
 				<param name="ios-package" value="MunbynWrapper" />
 			</feature>
 		</config-file>
-		<header-file src="src/ios/MunbynWrapper.h" />
-		<source-file src="src/ios/MunbynWrapper.m" />
-		<header-file src="src/ios/PrinerSDK.h" />
-		<source-file src="src/ios/libPrinterSDK.a" />
+		<header-file src="src/iOS/MunbynWrapper.h" />
+		<source-file src="src/iOS/MunbynWrapper.m" />
+		<header-file src="src/iOS/PrinerSDK.h" />
+		<source-file src="src/iOS/libPrinterSDK.a" />
 	</platform>
 </plugin>
