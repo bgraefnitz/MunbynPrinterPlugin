@@ -54,5 +54,6 @@ static NSString *printString = nil;
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
                    {
                        [[PrinterSDK defaultPrinterSDK] printText:printString];
+                       [[PrinterSDK defaultPrinterSDK] disconnect];
                    });}
 @end
