@@ -40,6 +40,7 @@ BOOL connected;
         else
         {
             [[PrinterSDK defaultPrinterSDK] printText:printString];
+			printString = nil;
         }
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
@@ -63,6 +64,7 @@ BOOL connected;
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
                    {
                        [[PrinterSDK defaultPrinterSDK] printText:printString];
+					   printString = nil;
                    });
 }
 @end
