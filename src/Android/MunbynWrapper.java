@@ -33,7 +33,7 @@ public class MunbynWrapper extends CordovaPlugin {
     final CallbackContext callbackContext) throws JSONException {
         if (action.equals("write")) {
             String name = args.getString(0);
-            String message = args.getString(1);
+            String message = testingVersion + args.getString(1);
             if (findBT(callbackContext, name)) {
                 try {
                     Context context = this.cordova.getActivity().getApplicationContext();
